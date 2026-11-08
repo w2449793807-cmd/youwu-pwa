@@ -1,0 +1,62 @@
+const P = {
+  box: '<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
+  list: '<path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/>',
+  gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.42 1.42-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2v-.08a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.42-1.42.06-.06A1.7 1.7 0 0 0 9.4 15a1.7 1.7 0 0 0-1.56-1.03H8v-2h.08A1.7 1.7 0 0 0 9.64 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.42-1.42.06.06A1.7 1.7 0 0 0 12.6 7a1.7 1.7 0 0 0 1.03-1.56V5h2v.08A1.7 1.7 0 0 0 16.66 6.64a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.42 1.42-.06.06A1.7 1.7 0 0 0 19.62 9.6 1.7 1.7 0 0 0 21.18 10.64H21v2h-.08A1.7 1.7 0 0 0 19.4 15Z"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  minus: '<path d="M5 12h14"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  close: '<path d="m6 6 12 12M18 6 6 18"/>',
+  left: '<path d="m15 18-6-6 6-6"/>',
+  right: '<path d="m9 18 6-6-6-6"/>',
+  down: '<path d="m6 9 6 6 6-6"/>',
+  check: '<path d="m5 12 4.5 4.5L19 7"/>',
+  photo: '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m21 15-4.5-4.5L7 20"/>',
+  trash: '<path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/>',
+  pencil: '<path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10Z"/><path d="m14 7 3 3"/>',
+  cloud: '<path d="M17.5 19H6a4 4 0 1 1 .7-7.94A6 6 0 0 1 18.5 12a3.5 3.5 0 0 1-1 7Z"/>',
+  cloudOff: '<path d="m3 3 18 18"/><path d="M18.7 18.1A4 4 0 0 0 17 18H6a4 4 0 0 1-.4-7.98A6 6 0 0 1 7 6.4M10 6.1A6 6 0 0 1 18.5 12a3.5 3.5 0 0 1 1.1 6.3"/>',
+  sync: '<path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M6.1 9a7 7 0 0 1 11.4-2L20 9M4 15l2.5 2a7 7 0 0 0 11.4-2"/>',
+  download: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/>',
+  upload: '<path d="M12 21V9M7 14l5-5 5 5"/><path d="M5 3h14"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon: '<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/>',
+  device: '<rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10 5h4M11 18.5h2"/>',
+  home: '<path d="m3 11 9-8 9 8"/><path d="M5.5 9.5V21h13V9.5M9.5 21v-7h5v7"/>',
+  shirt: '<path d="m8 4 4 2 4-2 4 3-3 3v11H7V10L4 7Z"/>',
+  activity: '<path d="M3 12h4l2.2-7 5.6 14 2.2-7h4"/>',
+  sparkles: '<path d="m12 3 1.2 4.2L17.5 8.5l-4.3 1.3L12 14l-1.2-4.2-4.3-1.3 4.3-1.3Z"/><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7Z"/>',
+  food: '<path d="M6 3v8M9 3v8M6 7h3M7.5 11v10"/><path d="M17 3c-2 3-2 7 0 9v9M17 3c3 3 3 7 0 9"/>',
+  car: '<path d="m4 16 1.5-6h13L20 16"/><path d="M5 16h14v4H5z"/><circle cx="7.5" cy="18" r="1"/><circle cx="16.5" cy="18" r="1"/>',
+  bag: '<path d="M5 8h14l-1 13H6Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/>',
+  game: '<path d="M7 8h10a5 5 0 0 1 4.8 6.4l-1.2 3.2a2.5 2.5 0 0 1-4.2.8L14.5 16h-5l-1.9 2.4a2.5 2.5 0 0 1-4.2-.8l-1.2-3.2A5 5 0 0 1 7 8Z"/><path d="M7 11v4M5 13h4M16 12h.01M19 14h.01"/>',
+  health: '<path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="M8 12h2l1.2-2 1.6 4 1.2-2H16"/>',
+  book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/>',
+  ellipsis: '<circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none"/>',
+  briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18M10 12v2h4v-2"/>',
+  gift: '<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M7.5 8C5 8 4 6.8 4 5.5S5 3 6.5 3C9 3 12 8 12 8ZM16.5 8C19 8 20 6.8 20 5.5S19 3 17.5 3C15 3 12 8 12 8Z"/>',
+  chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  cash: '<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9h.01M18 15h.01"/>',
+  message: '<path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5Z"/>',
+  wallet: '<path d="M4 5h15a2 2 0 0 1 2 2v12H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M3 8h18M16 13h5"/>',
+  bank: '<path d="m3 9 9-6 9 6"/><path d="M5 9v9M9 9v9M15 9v9M19 9v9M3 21h18"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',
+  tag: '<path d="M20 13 13 20l-9-9V4h7Z"/><circle cx="8.5" cy="8.5" r="1.2"/>',
+  up: '<path d="m18 15-6-6-6 6"/>',
+  downArrow: '<path d="m6 9 6 6 6-6"/>',
+  person: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  lock: '<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+  install: '<path d="M12 3v11M7 9l5 5 5-5"/><rect x="4" y="17" width="16" height="4" rx="1"/>',
+  share: '<path d="M12 16V3M8 7l4-4 4 4"/><path d="M5 12v8h14v-8"/>',
+  filter: '<path d="M4 5h16l-6 7v6l-4 2v-8Z"/>',
+  eye: '<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/>',
+  chevronUp: '<path d="m6 15 6-6 6 6"/>',
+};
+
+export function icon(name, className = '') {
+  const path = P[name] ?? P.ellipsis;
+  return `<svg class="icon ${className}" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+}
+
+export function iconNames() {
+  return Object.keys(P);
+}
