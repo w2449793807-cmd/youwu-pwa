@@ -501,3 +501,14 @@ img { display: block; max-width: 100%; }
   .tabbar { border-right: 1px solid var(--separator); border-left: 1px solid var(--separator); }
   .sheet { border-radius: 26px 26px 0 0; }
 }
+.sheet-secondary-action {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 10px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 650;
+}
+.sheet-secondary-action:active { transform: scale(.99); }
