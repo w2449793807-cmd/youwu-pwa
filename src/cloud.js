@@ -113,24 +113,15 @@ export class CloudSync {
     return this.user;
   }
 
-  async sendOtp(email) {
+  async signInWithPassword(email, password) {
     if (!this.client) throw new Error('请先配置云端');
     const cleanEmail = String(email ?? '').trim().toLowerCase();
+    const cleanPassword = String(password ?? '');
     if (!cleanEmail) throw new Error('请输入邮箱');
-    const { error } = await this.client.auth.signInWithOtp({
+    if (cleanPassword.length < 6) throw new Error('密码至少 6 位');
+    const { data, error } = await this.client.auth.signInWithPassword({
       email: cleanEmail,
-      options: { shouldCreateUser: true },
-    });
-    if (error) throw error;
-    return cleanEmail;
-  }
-
-  async verifyOtp(email, token) {
-    if (!this.client) throw new Error('请先配置云端');
-    const { data, error } = await this.client.auth.verifyOtp({
-      email: String(email ?? '').trim().toLowerCase(),
-      token: String(token ?? '').trim(),
-      type: 'email',
+      password: cleanPassword,
     });
     if (error) throw error;
     this.user = data?.user ?? data?.session?.user ?? null;
@@ -138,6 +129,25 @@ export class CloudSync {
     this.emitStatus();
     if (this.user) await this.syncNow();
     return this.user;
+  }
+
+  async signUpWithPassword(email, password, redirectTo) {
+    if (!this.client) throw new Error('请先配置云端');
+    const cleanEmail = String(email ?? '').trim().toLowerCase();
+    const cleanPassword = String(password ?? '');
+    if (!cleanEmail) throw new Error('请输入邮箱');
+    if (cleanPassword.length < 6) throw new Error('密码至少 6 位');
+    const { data, error } = await this.client.auth.signUp({
+      email: cleanEmail,
+      password: cleanPassword,
+      options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
+    });
+    if (error) throw error;
+    this.user = data?.session?.user ?? null;
+    this.status = this.user ? 'syncReady' : 'signedOut';
+    this.emitStatus();
+    if (this.user) await this.syncNow();
+    return { user: this.user, needsConfirmation: !data?.session };
   }
 
   async signOut() {
