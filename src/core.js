@@ -4,7 +4,7 @@ export const BACKUP_FORMAT = 'youwu-backup-v1';
 const DAY_MS = 86_400_000;
 
 export const DEFAULT_ITEM_CATEGORIES = [
-  { id: 'item-digital', name: '数码', kind: 'item', icon: 'device', color: '#4E6E80', updatedAt: 0 },
+  { id: 'item-digital', name: '数码', kind: 'item', icon: 'device', color: '#4C6F92', updatedAt: 0 },
   { id: 'item-home', name: '家居', kind: 'item', icon: 'home', color: '#5D765F', updatedAt: 0 },
   { id: 'item-clothes', name: '衣物', kind: 'item', icon: 'shirt', color: '#9A723E', updatedAt: 0 },
   { id: 'item-sport', name: '运动', kind: 'item', icon: 'activity', color: '#6A6784', updatedAt: 0 },
@@ -14,7 +14,7 @@ export const DEFAULT_ITEM_CATEGORIES = [
 
 export const DEFAULT_LEDGER_CATEGORIES = [
   { id: 'exp-food', name: '餐饮', kind: 'expense', icon: 'food', color: '#9A723E', updatedAt: 0 },
-  { id: 'exp-transport', name: '交通', kind: 'expense', icon: 'car', color: '#4E6E80', updatedAt: 0 },
+  { id: 'exp-transport', name: '交通', kind: 'expense', icon: 'car', color: '#4C6F92', updatedAt: 0 },
   { id: 'exp-shopping', name: '购物', kind: 'expense', icon: 'bag', color: '#855F6B', updatedAt: 0 },
   { id: 'exp-home', name: '居住', kind: 'expense', icon: 'home', color: '#5D765F', updatedAt: 0 },
   { id: 'exp-fun', name: '娱乐', kind: 'expense', icon: 'game', color: '#6A6784', updatedAt: 0 },
@@ -23,14 +23,14 @@ export const DEFAULT_LEDGER_CATEGORIES = [
   { id: 'exp-other', name: '其他', kind: 'expense', icon: 'ellipsis', color: '#70747A', updatedAt: 0 },
   { id: 'inc-salary', name: '工资', kind: 'income', icon: 'briefcase', color: '#5D765F', updatedAt: 0 },
   { id: 'inc-bonus', name: '奖金', kind: 'income', icon: 'gift', color: '#A57F3E', updatedAt: 0 },
-  { id: 'inc-invest', name: '理财', kind: 'income', icon: 'chart', color: '#4E6E80', updatedAt: 0 },
+  { id: 'inc-invest', name: '理财', kind: 'income', icon: 'chart', color: '#4C6F92', updatedAt: 0 },
   { id: 'inc-other', name: '其他', kind: 'income', icon: 'ellipsis', color: '#70747A', updatedAt: 0 },
 ];
 
 export const DEFAULT_ACCOUNTS = [
   { id: 'account-cash', name: '现金', icon: 'cash', color: '#5D765F', updatedAt: 0 },
   { id: 'account-wechat', name: '微信', icon: 'message', color: '#56755C', updatedAt: 0 },
-  { id: 'account-alipay', name: '支付宝', icon: 'wallet', color: '#537386', updatedAt: 0 },
+  { id: 'account-alipay', name: '支付宝', icon: 'wallet', color: '#4B6F92', updatedAt: 0 },
   { id: 'account-bank', name: '银行卡', icon: 'bank', color: '#967343', updatedAt: 0 },
 ];
 

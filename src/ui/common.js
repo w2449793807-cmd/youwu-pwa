@@ -78,7 +78,7 @@ export function statusColor(status) {
     active: '#5D765F',
     idle: '#9A723E',
     retired: '#70747A',
-    sold: '#537386',
+    sold: '#4B6F92',
   })[status] ?? '#70747A';
 }
 
