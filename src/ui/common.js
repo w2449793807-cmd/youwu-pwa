@@ -75,11 +75,11 @@ export function statusLabel(status) {
 
 export function statusColor(status) {
   return ({
-    active: '#30D158',
-    idle: '#FF9F0A',
-    retired: '#8E8E93',
-    sold: '#0A84FF',
-  })[status] ?? '#8E8E93';
+    active: '#5D765F',
+    idle: '#9A723E',
+    retired: '#70747A',
+    sold: '#537386',
+  })[status] ?? '#70747A';
 }
 
 export function downloadFile(filename, content, mime = 'application/json') {
@@ -101,7 +101,7 @@ export function toast(message, iconName = 'check') {
   const node = document.createElement('div');
   node.className = 'toast';
   node.innerHTML = `${icon(iconName)}<span>${escapeHtml(message)}</span>`;
-  root.append(node);
+  root.replaceChildren(node);
   requestAnimationFrame(() => node.classList.add('is-visible'));
   setTimeout(() => {
     node.classList.remove('is-visible');
