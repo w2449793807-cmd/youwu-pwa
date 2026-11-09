@@ -192,13 +192,20 @@ function openCloudConfig(ctx) {
   });
 }
 
+function authError(error) {
+  const message = error?.message ?? '';
+  if (/invalid login credentials/i.test(message)) return '邮箱或密码不正确';
+  if (/email not confirmed/i.test(message)) return '请先确认邮箱';
+  if (/already registered/i.test(message)) return '账号已存在，请直接登录';
+  return message || '登录失败';
+}
+
 function openCloudLogin(ctx) {
   if (!ctx.cloud.isConfigured()) {
     openCloudConfig(ctx);
     return;
   }
-  let otpSent = false;
-  let email = localStorage.getItem('youwu-last-email') || '';
+  const email = localStorage.getItem('youwu-last-email') || '';
   openSheet({
     title: '登录',
     body: `
@@ -207,37 +214,46 @@ function openCloudLogin(ctx) {
           <label class="form-label" for="cloud-email">邮箱</label>
           <input id="cloud-email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" value="${escapeHtml(email)}">
         </div>
-        <div class="form-row stack" id="otp-row" hidden>
-          <label class="form-label" for="cloud-otp">验证码</label>
-          <input id="cloud-otp" inputmode="numeric" autocomplete="one-time-code" placeholder="6 位验证码">
+        <div class="form-row stack">
+          <label class="form-label" for="cloud-password">密码</label>
+          <input id="cloud-password" type="password" autocomplete="current-password" placeholder="至少 6 位">
         </div>
-      </div>`,
-    primaryLabel: '发送',
-    onPrimary: async (content, layer) => {
-      const saveButton = layer.querySelector('.sheet-save');
-      if (!otpSent) {
-        email = content.querySelector('#cloud-email').value.trim();
-        try {
-          await ctx.cloud.sendOtp(email);
-          localStorage.setItem('youwu-last-email', email);
-          otpSent = true;
-          content.querySelector('#cloud-email').disabled = true;
-          content.querySelector('#otp-row').hidden = false;
-          saveButton.textContent = '登录';
-          content.querySelector('#cloud-otp').focus();
-          toast('验证码已发送', 'cloud');
-        } catch (error) {
-          toast(error.message ?? '发送失败', 'close');
-        }
-        return false;
-      }
+      </div>
+      <button type="button" class="sheet-secondary-action" id="create-cloud-account">创建账号</button>`,
+    primaryLabel: '登录',
+    onPrimary: async (content) => {
+      const nextEmail = content.querySelector('#cloud-email').value.trim();
+      const password = content.querySelector('#cloud-password').value;
       try {
-        await ctx.cloud.verifyOtp(email, content.querySelector('#cloud-otp').value);
+        await ctx.cloud.signInWithPassword(nextEmail, password);
+        localStorage.setItem('youwu-last-email', nextEmail);
         toast('已登录', 'check');
       } catch (error) {
-        toast(error.message ?? '登录失败', 'close');
+        toast(authError(error), 'close');
         return false;
       }
+    },
+    onMount: (content, _layer, close) => {
+      content.querySelector('#create-cloud-account').addEventListener('click', async () => {
+        const nextEmail = content.querySelector('#cloud-email').value.trim();
+        const password = content.querySelector('#cloud-password').value;
+        try {
+          const result = await ctx.cloud.signUpWithPassword(
+            nextEmail,
+            password,
+            `${location.origin}${location.pathname}`,
+          );
+          localStorage.setItem('youwu-last-email', nextEmail);
+          if (result.needsConfirmation) {
+            toast('确认邮件已发送', 'cloud');
+          } else {
+            toast('账号已创建', 'check');
+          }
+          close();
+        } catch (error) {
+          toast(authError(error), 'close');
+        }
+      });
     },
   });
 }
